@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Desafio</title>
+  </head>
+  <body>
+    <div id="page">
+      <header>
+        <h1>avalie a sua mentoria</h1>
+        <p>Chegou a hora de avaliar o seu mentor. Bora lá?</p>
+        <img
+          class="img-rating"
+          src="images/test.svg"
+          alt="Balão com cinco estrelas, 3 em branco e duas cinzas"
+        />
+
+        <h2 class="header-informations">Informações pessoais</h2>
+      </header>
+      <main>
+        <form id="my-form">
+          <fieldset class="personal-infos">
+            <div>
+              <div class="input-container">
+                <label for="name">Nome</label>
+                <input type="text" name="name" id="name" required />
+              </div>
+              <div class="input-container">
+                <label for="surname">Sobrenome</label>
+                <input type="text" name="surname" id="surname" required />
+              </div>
+            </div>
+
+            <div class="input-container">
+              <label for="email"
+                >Email <span>(digite um e-mail valido)</span></label
+              >
+              <input type="email" name="email" id="email" required />
+            </div>
+          </fieldset>
+
+          <fieldset class="mentor-information">
+            <legend>Informações do mentor</legend>
+
+            <div class="input-container">
+              <label for="mentor">Selecione quem foi o seu maior mentor</label>
+              <input type="text" name="mentor" id="mentor" required />
+            </div>
+
+            <div class="input-container">
+              <label for="mentor-feedback">Feedback sobre o mentor</label>
+              <textarea name="mentor-feedback" id="mentor-feedback"></textarea>
+            </div>
+
+            <div id="checkbox" class="input-container">
+              <input
+                id="check-doubts-mentoring"
+                name="check-doubts-mentoring"
+                type="checkbox"
+                required
+              />
+              <label for="check-doubts-mentoring"
+                >Feedback sobre o mentor</label
+              >
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Agendando próxima mentoria</legend>
+
+            <div class="col-3">
+              <div class="input-container">
+                <label for="date">Data <span>(DD/MM/AAAA)</span></label>
+                <input type="date" name="date" id="date" />
+              </div>
+              <div class="input-container">
+                <label for="start-time">Das</label>
+                <input type="time" name="start-time" id="start-time" />
+              </div>
+              <div class="input-container">
+                <label for="end-time"">Até</label>
+                <input type="time" name="end-time" id="end-time" />
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <button form="my-form">Salvar</button>
+      </main>
+    </div>
+  </body>
+</html>
