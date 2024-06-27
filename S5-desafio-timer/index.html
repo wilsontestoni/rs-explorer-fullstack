@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Focus Timer</title>
+    <script type="module" src="src/main.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="time-section">
+        <div class="timer flex">
+          <span class="minutes"></span>
+          <span>:</span>
+          <span class="seconds"></span>
+        </div>
+
+        <div class="controls">
+          <button data-action="play">
+            <img src="assets/images/play.svg" />
+            <span class="sr-only">Iniciar contador</span>
+          </button>
+          <button data-action="stop">
+            <img src="assets/images/stop.svg" />
+            <span class="sr-only">Parar contador</span>
+          </button>
+          <button data-action="increaseTime">
+            <img src="assets/images/increase.svg" />
+            <span class="sr-only">Aumentar 5 minutos no contador</span>
+          </button>
+          <button data-action="decreaseTime">
+            <img src="assets/images/decrease.svg" />
+            <span class="sr-only">Diminuir 5 minutos no contador</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="themes-container">
+        <button data-theme="tree">
+          <img src="assets/images/tree.svg" alt="" />
+          <span class="sr-only">Mudar o tema e começar o som de floresta</span>
+        </button>
+        <button data-theme="cloud">
+          <img src="assets/images/cloud.svg" alt="" />
+          <span class="sr-only">Mudar o tema e começar o som de chuva</span>
+        </button>
+        <button data-theme="market">
+          <img src="assets/images/market.svg" alt="" />
+          <span class="sr-only">Mudar o tema e começar o som de cafeteria</span>
+        </button>
+        <button data-theme="fire">
+          <img src="assets/images/fire.svg" alt="" />
+          <span class="sr-only">Mudar o tema e começar o som de lareira</span>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
