@@ -10,7 +10,7 @@ export function tree(button) {
 }
 
 export function cloud(button) {
-  button.classList.toggle("bg-cloud");""
+  button.classList.toggle("bg-cloud");
   button.querySelector("img").classList.toggle("selected");
   soundsLibrary.bgRainSound.play();
   themeState.themeActived = true;
