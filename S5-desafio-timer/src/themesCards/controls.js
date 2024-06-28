@@ -25,21 +25,21 @@ export function registerCardsControl() {
     }
 
     switch (theme) {
-      case "tree":
-        themeState.themeChosed = "tree";
-        actions.tree(button);
+      case "forestTheme":
+        themeState.themeChosed = "forestTheme";
+        actions.activeForestTheme(button);
         break;
-      case "cloud":
-        themeState.themeChosed = "cloud";
-        actions.cloud(button);
+      case "rainTheme":
+        themeState.themeChosed = "rainTheme";
+        actions.activeRainTheme(button);
         break;
-      case "market":
-        themeState.themeChosed = "market";
-        actions.market(button);
+      case "coffeeTheme":
+        themeState.themeChosed = "coffeeTheme";
+        actions.activeCoffeeShopTheme(button);
         break;
-      case "fire":
-        themeState.themeChosed = "fire";
-        actions.fire(button);
+      case "fireplaceTheme":
+        themeState.themeChosed = "fireplaceTheme";
+        actions.activeFireplaceTheme(button);
         break;
     }
   });

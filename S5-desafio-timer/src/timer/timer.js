@@ -3,7 +3,9 @@ import { state } from "./state.js";
 import * as soundsLibrary from "./audios.js";
 
 export function startCountdown() {
+
   clearTimeout(state.countDownId);
+
 
   let minutes = Number(element.minutes.textContent);
   let seconds = Number(element.seconds.textContent) - 1;

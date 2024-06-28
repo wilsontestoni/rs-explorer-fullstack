@@ -94,19 +94,19 @@ main {
   filter: invert(1);
 }
 
-.themes-container .bg-tree {
+.themes-container .bg-forestTheme {
   background-color: rgb(57, 240, 57);
 }
 
-.themes-container .bg-cloud {
+.themes-container .bg-rainTheme {
   background-color: rgb(126, 168, 248);
 }
 
-.themes-container .bg-market {
+.themes-container .bg-coffeeTheme {
   background-color: rgb(218, 188, 55);
 }
 
-.themes-container .bg-fire {
+.themes-container .bg-fireplaceTheme {
   background-color: rgb(247, 125, 89);
 }
 
