@@ -46,12 +46,13 @@ body * {
 }
 
 .app header .search {
+  width: 640px;
   display: flex;
   gap: 0.8rem;
 }
 
 .search #input-search {
-  width: 46.2rem;
+  width: 100%;
   font-size: 1.6rem;
   border: none;
   background: #06181c;
