@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --bg-color: #000000;
+  --text-color: #e1e1e6;
+  --bg-table-even: #06181c;
+}
+
+body {
+  font-size: 1.6rem;
+  background: var(--bg-color);
+}
+
+body * {
+  font-family: "Roboto", sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.app {
+  max-width: 112rem;
+  margin: 11.5rem auto;
+}
+
+.app header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8.7rem;
+}
+
+.app header .search {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.search #input-search {
+  width: 46.2rem;
+  font-size: 1.6rem;
+  border: none;
+  background: #06181c;
+  padding: 1.6rem;
+  border-radius: 0.5rem;
+  flex: 1;
+  color: #fff;
+}
+
+.search #input-search::placeholder {
+  color: #7c7c8a;
+}
+
+.search button {
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: #065e7c;
+  color: #fff;
+  border: none;
+  padding: 1.2rem 3.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.2s;
+}
+
+table {
+  width: 100%;
+  color: var(--text-color);
+  border-collapse: collapse;
+  outline: 0.1rem solid #4a808c;
+  border-radius: 1.2rem;
+}
+
+table thead th:first-child {
+  border-top-left-radius: 1.2rem;
+}
+table thead th:last-child {
+  border-top-right-radius: 1.2rem;
+}
+table tbody td:first-child {
+  border-bottom-right-radius: 1.2rem;
+}
+table tbody td:last-child {
+  border-bottom-right-radius: 1.2rem;
+}
+
+.table-header th {
+  font-size: 2rem;
+  font-weight: 600;
+  background: #092d38;
+  padding: 1.6rem;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  border: 1px solid #4a808c;
+  background: var(--bg-table-even);
+}
+
+td {
+  font-weight: bold;
+  padding: 1.6rem;
+  font-size: 2rem;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.user img {
+  width: 56px;
+  border-radius: 50%;
+}
+
+.user a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.user a p {
+  margin-bottom: 0.3rem;
+}
+
+.user a span {
+  font-weight: 400;
+}
+
+.remove {
+  font-weight: bold;
+  font-size: 2rem;
+  border: none;
+  background: none;
+  color: #f75a68;
+  cursor: pointer;
+}
+
+.empty-repositories {
+  height: 61.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.empty-repositories p {
+  font-size: 4rem;
+  color: #4e5455;
+}
