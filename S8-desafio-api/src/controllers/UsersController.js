@@ -6,12 +6,10 @@ class UsersController {
   async create(req, res) {
     const { name, email, password } = req.body;
 
-    const hasNoData = !name || !email || !password;
-
-    if (hasNoData) {
-      throw new AppError("É preciso informar todos os campos para cadastro")
-    }
-
+    if (!name) throw new AppError("É preciso informar o nome para cadastro")
+    if (!email) throw new AppError("É preciso informar o email para cadastro")
+    if (!password) throw new AppError("É preciso informar a senha para cadastro")
+    
     const emailExists = (await knex.select("email").from("users").where(`email`, email)) > 0;
       
     if (emailExists) {
