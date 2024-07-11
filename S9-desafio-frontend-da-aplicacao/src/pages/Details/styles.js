@@ -38,7 +38,6 @@ export const TitleContainer = styled.div`
     font-weight: 500;
     font-size: 3.6rem;
     line-height: 4.7rem;
-    margin-bottom: 2.4rem;
   }
 
   span {
@@ -47,6 +46,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const SubtitleContainer = styled.div`
+  margin-top: 2.4rem; 
   display: flex;
   gap: 1.4rem;
   font-size: 1.6rem;
