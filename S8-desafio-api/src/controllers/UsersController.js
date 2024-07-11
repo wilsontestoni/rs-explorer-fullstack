@@ -12,6 +12,8 @@ class UsersController {
     
     const emailExists = (await knex.select("email").from("users").where(`email`, email)) > 0;
       
+    console.log(emailExists)
+
     if (emailExists) {
       throw new AppError("E-mail já está cadastrado na plataforma")
     }
