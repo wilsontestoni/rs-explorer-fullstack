@@ -6,7 +6,7 @@ export function Header() {
   return (
     <>
       <Container>
-        <Logo>RocketMovies</Logo>
+        <Logo to={"/"}>RocketMovies</Logo>
 
         <Input type="text" placeholder="Pesquisar pelo titulo" />
 

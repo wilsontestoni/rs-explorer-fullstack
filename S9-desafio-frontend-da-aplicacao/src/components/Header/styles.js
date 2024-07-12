@@ -49,9 +49,10 @@ export const Profile = styled.div`
   }
 `;
 
-export const Logo = styled.span`
+export const Logo = styled(Link)`
   font-size: 2.4rem;
   font-weight: 700;
+  text-decoration: none;
 
   color: ${({ theme }) => theme.COLORS.PINK};
 `;
