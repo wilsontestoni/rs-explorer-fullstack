@@ -36,13 +36,13 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.COLORS.GRAY_600};
   }
 
-  > div:nth-child(1) {
+  > div:nth-child(2) {
     display: flex;
     gap: 4rem;
     margin-bottom: 4rem;
   }
 
-  > div:nth-child(4) {
+  > div:nth-child(5) {
     display: flex;
     background-color: ${({ theme }) => theme.COLORS.BLACK};
 
@@ -55,7 +55,7 @@ export const Form = styled.form`
     margin-bottom: 4rem;
   }
 
-  > div:nth-child(5) {
+  > div:nth-child(6) {
     width: 100%;
     padding: 1.6;
     display: flex;

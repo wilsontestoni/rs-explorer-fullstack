@@ -29,6 +29,14 @@ export function NewMovie() {
           <h2>Marcadores</h2>
           <div>
             <NoteItem value="React" />
+            <NoteItem value="React" />
+            <NoteItem value="React" />
+            <NoteItem value="React" />
+            <NoteItem value="React" />
+            
+      
+          
+
             <NoteItem isNew placeholder="Novo marcador" />
           </div>
 

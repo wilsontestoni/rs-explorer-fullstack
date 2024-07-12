@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   background: ${({ theme, isNew }) =>
     isNew ? "transparent" : theme.COLORS.GRAY_700};
@@ -29,7 +28,7 @@ export const Container = styled.div`
   }
 
   > input {
-    max-width: 14rem;
+    max-width: 14.2rem;
     font-size: 1.6rem;
 
     color: ${({ theme }) => theme.COLORS.WHITE};
