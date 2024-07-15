@@ -10,12 +10,12 @@ class UsersController {
     if (!email) throw new AppError("É preciso informar o email para cadastro")
     if (!password) throw new AppError("É preciso informar a senha para cadastro")
     
-    const emailExists = (await knex.select("email").from("users").where(`email`, email)) > 0;
+    const emailExists = await knex("users").where("email", email).first()
       
     console.log(emailExists)
 
     if (emailExists) {
-      throw new AppError("E-mail já está cadastrado na plataforma")
+      throw new AppError("E-mail já está cadastrado na plataforma");
     }
 
     const hashedPassword = await hash(password, 8)
