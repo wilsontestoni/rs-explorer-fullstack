@@ -7,6 +7,10 @@ export const Container = styled.div`
   border-radius: 16px;
   background-color: ${({ theme }) => theme.COLORS.CARDS_BACKGROUND};
 
+  &:hover {
+    cursor: pointer;
+  }
+
   > h2 {
     font-size: 2.4rem;
     font-weight: bold;
