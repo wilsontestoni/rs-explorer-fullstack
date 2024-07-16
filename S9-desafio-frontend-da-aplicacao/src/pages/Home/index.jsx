@@ -19,6 +19,54 @@ export function Home() {
           </div>
 
           <Movies>
+          <MovieCard
+              data={{
+                title: "O Senhor dos Anéis",
+                rate: 3,
+                description:
+                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
+                tags: [
+                  { id: "1", name: "Fantasia" },
+                  { id: "2", name: "Ação" },
+                ],
+              }}
+            />
+            <MovieCard
+              data={{
+                title: "O Senhor dos Anéis",
+                rate: 3,
+                description:
+                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
+                tags: [
+                  { id: "1", name: "Fantasia" },
+                  { id: "2", name: "Ação" },
+                ],
+              }}
+            />
+            <MovieCard
+              data={{
+                title: "O Senhor dos Anéis",
+                rate: 3,
+                description:
+                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
+                tags: [
+                  { id: "1", name: "Fantasia" },
+                  { id: "2", name: "Ação" },
+                ],
+              }}
+            />
+            <MovieCard
+              data={{
+                title: "O Senhor dos Anéis",
+                rate: 3,
+                description:
+                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
+                tags: [
+                  { id: "1", name: "Fantasia" },
+                  { id: "2", name: "Ação" },
+                ],
+              }}
+            />
             <MovieCard
               data={{
                 title: "O Senhor dos Anéis",
