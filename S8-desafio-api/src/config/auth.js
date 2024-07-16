@@ -1,6 +1,6 @@
 module.exports = {
   jwt: {
-    secret: "default",
+    secret: "reactMovies123",
     expiresIn: "1d"
   }
 }

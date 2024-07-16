@@ -1,15 +1,27 @@
-//  TERMINAR DAQUI DEPOIS
 const { verify } = require("jsonwebtoken");
 const AppError = require("../utils/AppError.js");
-import auth from "../config/auth";
+const auth = require("../config/auth");
 
 function checkAutentication(req, res, next) {
-  const { token, id } = req.headers.authorization;
+  const authHeader = req.headers.authorization;
 
-  console.log(token, id);
-  return aaa
+  if (!authHeader) throw new AppError("Token não informado", 401);
 
-  // const validToken = verify(token, auth.jwt.secret)
+  const [, token] = authHeader.split(" ");
+
+  try {
+    const validToken = verify(token, auth.jwt.secret);
+
+    req.user = {
+      id: Number(validToken.sub),
+    };
+
+    console.log(req.user);
+
+    return next();
+  } catch {
+    throw new AppError("Sessão expirada! faça o login novamente", 401);
+  }
 }
 
 module.exports = checkAutentication;
