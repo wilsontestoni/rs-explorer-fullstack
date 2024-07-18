@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { FiArrowLeft } from "react-icons/fi";
 import { Container, Form, ResetButton } from "./styles";
@@ -13,18 +13,45 @@ import { Input } from "../../components/Input";
 import { Header } from "../../components/Header";
 import { ButtonLink } from "../../components/ButtonLink";
 
-export function NewMovie() {
+export function EditMovie() {
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
   const [rating, setRating] = useState("");
-
   const [description, setDescription] = useState("");
 
   const [newTag, setNewTag] = useState("");
   const [tags, setTags] = useState([]);
 
-  async function submitHandler() {
+  useEffect(() => {
+    async function fetchMovieData() {
+      try {
+        const response = await api.get(`/movies/${id}`);
+        const movieData = response.data;
+        const movieTags = movieData.tags;
+
+        const tagsName = movieTags.map((movie) => movie.name);
+
+        setTitle(movieData.title);
+        setRating(movieData.rating);
+        setDescription(movieData.description);
+        setTags(tagsName);
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message);
+          return;
+        }
+        alert(
+          "Não foi possível carregar os dados do filme, tente novamete mais tarde"
+        );
+      }
+    }
+
+    fetchMovieData();
+  }, []);
+
+  async function editMovieHandler() {
     const movie = {
       title,
       rating: Number(rating),
@@ -32,9 +59,12 @@ export function NewMovie() {
       tags,
     };
 
+    console.log("movie tags:", movie.tags);
+    console.log("tags", tags);
+
     try {
-      await api.post("/movies", movie);
-      alert("Criado com sucesso!");
+      await api.put(`/movies/${id}`, movie);
+      alert("Filme alterado com sucesso!");
       navigate("/");
     } catch (error) {
       if (error.response) {
@@ -45,12 +75,18 @@ export function NewMovie() {
     }
   }
 
-  function resetHandler() {
-    navigate("/");
-    // setDescription("");
-    // setTitle("");
-    // setRating("");
-    // setTags([]);
+  async function movieDeletionHandler() {
+    try {
+      await api.delete(`/movies/${id}`);
+      alert("Filme excluido com sucesso!");
+      navigate("/");
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+        return;
+      }
+      alert("Não foi possível no momento, tente novamente mais tarde");
+    }
   }
 
   function handleDeleteTag(deletedTag) {
@@ -59,13 +95,13 @@ export function NewMovie() {
   }
 
   function handleNewTag() {
+    console.log("Nova tag");
     setTags((prevState) => [...prevState, newTag]);
     setNewTag("");
   }
 
   function handleBack() {
     navigate(-1);
-    console.log("cliquei");
   }
 
   return (
@@ -77,7 +113,7 @@ export function NewMovie() {
         </ButtonLink>
 
         <Form>
-          <h1>Novo Filme</h1>
+          <h1>Editar Filme</h1>
           <div>
             <Input
               onChange={(e) => setTitle(e.target.value)}
@@ -120,11 +156,11 @@ export function NewMovie() {
           </div>
 
           <div>
-            <ResetButton onClick={resetHandler} type="button">
+            <ResetButton onClick={movieDeletionHandler} type="button">
               Excluir filme
             </ResetButton>
-            <Button onClick={submitHandler} type="button">
-              Criar
+            <Button onClick={editMovieHandler} type="button">
+              Salvar alterações
             </Button>
           </div>
         </Form>

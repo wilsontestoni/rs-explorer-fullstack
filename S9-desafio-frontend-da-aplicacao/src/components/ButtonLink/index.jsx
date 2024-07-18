@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-export function Link({ icon: Icon, children, ...rest }) {
+export function ButtonLink({ icon: Icon, children, ...rest }) {
   return (
     <Container {...rest}>
       {Icon && <Icon />}

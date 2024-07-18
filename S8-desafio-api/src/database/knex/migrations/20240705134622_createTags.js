@@ -3,7 +3,7 @@ exports.up = (knex) =>
     table.increments("id");
     table.text("name").notNullable();
     table.integer("user_id").references("id").inTable("users");
-    table.integer("note_id").references("id").inTable("notes").onDelete("CASCADE");
+    table.integer("movie_id").references("id").inTable("movies").onDelete("CASCADE");
   });
 
 exports.down = (knex) => knex.schema.dropTable("tags");

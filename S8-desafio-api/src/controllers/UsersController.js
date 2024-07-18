@@ -1,3 +1,4 @@
+const moment = require("moment");
 const { hash, compare } = require("bcryptjs");
 const AppError = require("../utils/AppError.js");
 const knex = require("../database/knex");
@@ -24,13 +25,20 @@ class UsersController {
 
     const hashedPassword = await hash(password, 8);
 
-    await knex("users").insert({ name, email, password: hashedPassword });
+    const created_at = moment().format("YYYY-MM-DD HH:mm:ss");
+
+    await knex("users").insert({
+      name,
+      email,
+      password: hashedPassword,
+      created_at: created_at,
+    });
 
     return res.status(201).json();
   }
 
   async update(req, res) {
-    const { name, email, password, old_password } = req.body;
+    const { name, email, old_password, password } = req.body;
     const user_id = req.user.id;
 
     const user = await knex("users").where({ id: user_id }).first();
@@ -41,13 +49,6 @@ class UsersController {
       const otherUserWithTheNewEmail = await knex("users")
         .where({ email })
         .first();
-
-      console.log(
-        "Outra pessoa id: ",
-        otherUserWithTheNewEmail.id,
-        "usuário atual id: ",
-        user_id
-      );
 
       if (otherUserWithTheNewEmail && otherUserWithTheNewEmail.id !== user_id) {
         throw new AppError("Este e-mail já está sendo usado");
@@ -73,11 +74,13 @@ class UsersController {
       user.password = await hash(password, 8);
     }
 
+    const updated_at = moment().format("YYYY-MM-DD HH:mm:ss");
+
     await knex("users").where({ id: user_id }).update({
       name: user.name,
       email: user.email,
       password: user.password,
-      updated_at: knex.fn.now(),
+      updated_at: updated_at,
     });
 
     res.json();

@@ -4,7 +4,19 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
   max-width: 112rem;
   margin: auto;
-  margin-top: 4.6rem;
+
+  h1 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    white-space: nowrap;
+  }
+
+  h2 {
+    font-size: 2.1rem;
+    margin-inline: auto;
+    color: ${({ theme }) => theme.COLORS.GRAY_600};
+  }
 `;
 
 export const Main = styled.main`
@@ -12,17 +24,10 @@ export const Main = styled.main`
   flex-direction: column;
 
   > div:nth-child(1) {
+    margin: 4.7rem 0 3.7rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 3.6rem;
-
-    > h1 {
-      font-size: 3.2rem;
-      font-weight: 400;
-      color: ${({ theme }) => theme.COLORS.WHITE};
-      white-space: nowrap;
-    }
   }
 `;
 
@@ -31,9 +36,9 @@ export const Movies = styled.div`
   flex-direction: column;
   gap: 2.4rem;
 
-  height: 71.6rem;
+  max-height: 71.6rem;
   overflow-y: auto;
-  margin: 4rem 0;
+  margin-bottom: 4rem;
 
   &::-webkit-scrollbar {
     width: 22px;

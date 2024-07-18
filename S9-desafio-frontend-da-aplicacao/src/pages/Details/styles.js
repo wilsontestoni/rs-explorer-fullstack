@@ -4,13 +4,19 @@ export const Container = styled.div`
   max-width: 112rem;
   margin: 4.6rem auto 8.5rem;
 
+  > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   > main {
     margin: 2.4rem 0 4rem;
 
     width: 100%;
     color: ${({ theme }) => theme.COLORS.WHITE};
 
-    height: 47rem;
+    max-height: 47rem;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
@@ -24,6 +30,7 @@ export const Container = styled.div`
     }
 
     p {
+      white-space: pre-wrap;
       text-align: justify;
     }
   }
@@ -46,7 +53,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const SubtitleContainer = styled.div`
-  margin-top: 2.4rem; 
+  margin-top: 2.4rem;
   display: flex;
   gap: 1.4rem;
   font-size: 1.6rem;

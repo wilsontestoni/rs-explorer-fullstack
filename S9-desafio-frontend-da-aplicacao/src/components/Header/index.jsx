@@ -1,32 +1,56 @@
-import { Container, Logo, Profile, Divisor, LinkWithoutStyle } from "./styles";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
+
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
+
+import {
+  Container,
+  Logo,
+  Profile,
+  LinkWithoutStyle,
+  HeaderFullWidth,
+} from "./styles";
 
 import { Input } from "../../components/Input";
 
-export function Header() {
+export function Header({ searchHandler }) {
+  const navigation = useNavigate();
+
+  const { signOut, user } = useAuth();
+
+  const avatarUrl = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarPlaceholder;
+
+  function handleSignOut() {
+    navigation();
+    signOut();
+  }
+
   return (
-    <>
+    <HeaderFullWidth>
       <Container>
         <Logo to={"/"}>RocketMovies</Logo>
 
-        <Input type="text" placeholder="Pesquisar pelo titulo" />
+        <Input
+          onChange={searchHandler}
+          type="text"
+          placeholder="Pesquisar pelo titulo"
+        />
 
         <Profile>
           <div>
             <LinkWithoutStyle to={"/profile"}>
-              <strong>Wilson Testoni</strong>
+              <strong>{user.name}</strong>
             </LinkWithoutStyle>
-            <button>Sair</button>
+            <button onClick={handleSignOut}>Sair</button>
           </div>
           <LinkWithoutStyle to={"/profile"}>
-            <img
-              src="https://github.com/wilsontestoni.png"
-              alt="Imagem do usuário"
-            />
+            <img src={avatarUrl} alt={user.name} />
           </LinkWithoutStyle>
         </Profile>
       </Container>
-
-      <Divisor />
-    </>
+    </HeaderFullWidth>
   );
 }

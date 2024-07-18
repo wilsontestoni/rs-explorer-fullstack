@@ -1,3 +1,8 @@
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
+import { api } from "../../services/api";
+
 import { FiArrowLeft, FiClock } from "react-icons/fi";
 
 import { Container, SubtitleContainer, TitleContainer, Tags } from "./styles";
@@ -5,21 +10,67 @@ import { Container, SubtitleContainer, TitleContainer, Tags } from "./styles";
 import { Rate } from "../../components/Rate";
 import { Tag } from "../../components/Tag";
 import { Header } from "../../components/Header";
-import { Link } from "../../components/Link";
+import { ButtonLink } from "../../components/ButtonLink";
 
 export function Details() {
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  const [formatedData, setFormatedData] = useState("");
+  const [movie, setMovie] = useState({});
+
+  useEffect(() => {
+    async function fetchMovieData() {
+      const response = await api.get(`/movies/${id}`);
+      const movieData = response.data;
+      const movieCreationDate = movieData.created_at;
+
+      setMovie(movieData);
+
+      handleData(movieCreationDate);
+    }
+
+    fetchMovieData();
+  }, []);
+
+  function handleData(creationDate) {
+    const date = new Date(creationDate);
+
+    const day = ("0" + date.getDate()).slice(-2);
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    const hours = ("0" + date.getHours()).slice(-2);
+    const minutes = ("0" + date.getMinutes()).slice(-2);
+    const formatedDate = `${day}/${month}/${year} às ${hours}:${minutes}`;
+
+    setFormatedData(formatedDate);
+  }
+
+  function handleBack() {
+    navigate(-1);
+  }
+
+  function handleEditPageChange() {
+    navigate(`/edit/${movie.id}`);
+  }
+
   return (
     <>
       <Header />
       <Container>
-        <Link to={"/"} icon={FiArrowLeft}>
-          Voltar
-        </Link>
+        <div>
+          <ButtonLink onClick={handleBack} icon={FiArrowLeft}>
+            Voltar
+          </ButtonLink>
+
+          <ButtonLink onClick={handleEditPageChange}>Editar Filme</ButtonLink>
+        </div>
 
         <main>
           <TitleContainer>
-            <h1>O Senhor dos Anéis</h1>
-            <Rate userRate={3} starSize={20} />
+            <h1>{movie.title}</h1>
+            <Rate userRate={movie.rating} starSize={20} />
           </TitleContainer>
 
           <SubtitleContainer>
@@ -32,45 +83,18 @@ export function Details() {
             </div>
             <div>
               <FiClock />
-              <p>23/05/22 às 08:00</p>
+              <p>{formatedData}</p>
             </div>
           </SubtitleContainer>
 
           <Tags>
-            <Tag title="Fantasia" />
-            <Tag title="Ação" />
+            {movie.tags &&
+              movie.tags.map((tag, index) => (
+                <Tag key={index} title={tag.name} />
+              ))}
           </Tags>
 
-          <p>
-            ChatGPT O Senhor dos Anéis é uma trilogia épica de fantasia dirigida
-            por Peter Jackson, baseada nos livros de J.R.R. Tolkien. A história
-            se passa em um mundo chamado Terra-média, onde uma jóia poderosa, o
-            Um Anel, cai nas mãos de um hobbit chamado Frodo Baggins. Ele é
-            encarregado de destruir o Anel no Monte da Perdição para evitar que
-            caia nas mãos do maligno Senhor do Escuro, Sauron, que busca dominar
-            o mundo. Frodo é acompanhado por amigos leais: Samwise Gamgee, Merry
-            e Pippin, além de outros personagens como Aragorn, Legolas o elfo e
-            Gimli o anão. Juntos, eles enfrentam uma jornada perigosa através de
-            terras hostis e batalhas épicas contra criaturas malignas e
-            exércitos de Sauron. le é encarregado de destruir o Anel no Monte da
-            Perdição le é encarregado de destruir o Anel no Monte da Perdição
-            para evitar que caia nas mãos do maligno Senhor do Escuro, Sauron,
-            que busca dominar o mundo. Frodo é acompanhado por amigos leais:
-            Samwise Gamgee, Merry e Pippin, além de outros personagens como
-            Aragorn, Legolas o elfo e Gimli o anão. Juntos, eles enfrentam uma
-            jornada perigosa através de terras hostis e batalhas épicas contra
-            criaturas malignas e exércitos de Sauron. le é encarregado de
-            destruir o Anel no Monte da Perdição criaturas malignas e exércitos
-            de Sauron. le é encarregado de destruir o Anel no Monte da Perdição
-            le é encarregado de destruir o Anel no Monte da Perdição para evitar
-            que caia nas mãos do maligno Senhor do Escuro, Sauron, que busca
-            dominar o mundo. Frodo é acompanhado por amigos leais: Samwise
-            Gamgee, Merry e Pippin, além de outros personagens como Aragorn,
-            Legolas o elfo e Gimli o anão. Juntos, eles enfrentam uma jornada
-            perigosa através de terras hostis e batalhas épicas contra criaturas
-            malignas e exércitos de Sauron. le é encarregado de destruir o Anel
-            no Monte da Perdição
-          </p>
+          <p>{movie.description}</p>
         </main>
       </Container>
     </>

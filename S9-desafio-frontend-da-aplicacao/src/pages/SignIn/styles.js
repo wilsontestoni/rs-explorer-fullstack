@@ -1,6 +1,6 @@
 import backgroundImg from "../../assets/background.png";
 import styled from "styled-components";
-import { Link } from "../../components/Link";
+import { ButtonLink } from "../../components/ButtonLink";
 
 export const Container = styled.div`
   height: 100vh;
@@ -46,7 +46,7 @@ export const Form = styled.form`
   }
 `;
 
-export const Anchor = styled(Link)`
+export const Anchor = styled(ButtonLink)`
   margin-top: 4.8rem;
 `;
 export const Background = styled.div`

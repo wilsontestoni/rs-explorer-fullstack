@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Container = styled.header`
+export const HeaderFullWidth = styled.header`
+  width: 100%;
+  border-bottom: 0.2rem solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
+`;
+
+export const Container = styled.div`
   max-width: 112rem;
   height: 11.6rem;
   margin: auto;
@@ -55,10 +60,6 @@ export const Logo = styled(Link)`
   text-decoration: none;
 
   color: ${({ theme }) => theme.COLORS.PINK};
-`;
-
-export const Divisor = styled.div`
-  border-bottom: 0.2rem solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
 `;
 
 export const LinkWithoutStyle = styled(Link)`

@@ -1,3 +1,9 @@
+import { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
+
+import { api } from "../../services/api";
+
 import { FiPlus } from "react-icons/fi";
 import { Container, Main, Movies, ButtonNewMovie } from "./styles";
 
@@ -5,9 +11,32 @@ import { MovieCard } from "../../components/MovieCard";
 import { Header } from "../../components/Header";
 
 export function Home() {
+  const navigate = useNavigate();
+
+  const [search, setSearch] = useState("");
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function fetchMoviesData() {
+      const response = await api.get(`/movies?title=${search}`);
+      const userMovies = response.data;
+      setMovies(userMovies);
+    }
+
+    fetchMoviesData();
+  }, [search]);
+
+  function handleInputSearch(e) {
+    setSearch(e.target.value);
+  }
+
+  function handleMovieDetails(movieId) {
+    navigate(`/details/${movieId}`);
+  }
+
   return (
     <>
-      <Header />
+      <Header searchHandler={handleInputSearch} />
       <Container>
         <Main>
           <div>
@@ -19,150 +48,19 @@ export function Home() {
           </div>
 
           <Movies>
-          <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
-            <MovieCard
-              data={{
-                title: "O Senhor dos Anéis",
-                rate: 3,
-                description:
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quidem asperiores non praesentium, odio id saepe possimus magnam voluptatibus facere tenetur perferendis, provident minima voluptatum, itaque adipisci sapiente veritatis nisi.",
-                tags: [
-                  { id: "1", name: "Fantasia" },
-                  { id: "2", name: "Ação" },
-                ],
-              }}
-            />
+            {movies.length > 0 ? (
+              movies.map((movie) => (
+                <MovieCard
+                  onClick={() => {
+                    handleMovieDetails(movie.id);
+                  }}
+                  key={movie.id}
+                  data={movie}
+                />
+              ))
+            ) : (
+              <h2>Ainda não há filmes cadastrados</h2>
+            )}
           </Movies>
         </Main>
       </Container>

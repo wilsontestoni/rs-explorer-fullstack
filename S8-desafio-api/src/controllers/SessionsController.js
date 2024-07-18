@@ -8,9 +8,10 @@ class SessionsController {
   async create(req, res) {
     const { email, password } = req.body;
 
-    if (!email) throw new AppError("É preciso informar o email para cadastro");
+    if (!email)
+      throw new AppError("É preciso informar o email para logar na plataforma");
     if (!password)
-      throw new AppError("É preciso informar a senha para cadastro");
+      throw new AppError("É preciso informar a senha para logar na plataforma");
 
     const user = await knex("users").where({ email }).first();
     if (!user) throw new AppError("Usuário não existe");

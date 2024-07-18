@@ -3,11 +3,11 @@ import { Container } from "./styles";
 import { Rate } from "../Rate";
 import { Tag } from "../Tag";
 
-export function MovieCard({ data }) {
+export function MovieCard({ data, ...rest }) {
   return (
-    <Container>
+    <Container {...rest}>
       <h2>{data.title}</h2>
-      <Rate userRate={data.rate} starSize={12} />
+      <Rate userRate={data.rating} starSize={12} />
       <p>{data.description}</p>
 
       {data.tags && (
