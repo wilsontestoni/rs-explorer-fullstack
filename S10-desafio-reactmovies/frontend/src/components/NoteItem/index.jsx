@@ -5,20 +5,11 @@ import { Container } from "./styles";
 export function NoteItem({ value, isNew, onClick, ...rest }) {
   return (
     <Container isNew={isNew}>
-
-      
       {isNew ? (
         <input type="text" value={value} readOnly={!isNew} {...rest} />
       ) : (
         <span>{value}</span>
       )}
-
-      {/* <input 
-        type="text" 
-        value={value}
-        readOnly={!isNew}
-        {...rest}
-      /> */}
 
       <button
         type="button"

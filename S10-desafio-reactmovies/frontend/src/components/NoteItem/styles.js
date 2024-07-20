@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  gap: 1.6rem;
 
-  width: ${({ theme, isNew }) =>
-    isNew ? "18.0rem" : "auto"};
+  width: ${({ isNew }) =>
+    isNew ? "18.6rem" : "auto"};
 
   background: ${({ theme, isNew }) =>
     isNew ? "transparent" : theme.COLORS.GRAY_700};
@@ -29,18 +30,13 @@ export const Container = styled.div`
   .button-color {
     color: ${({ theme }) => theme.COLORS.PINK};
   }
-
-  span {
-    padding-right: 1.6rem;
-    padding-bottom: .3rem;
-  }
-
   > input {
     width: 100%;
   }
 
   > span, input {
     font-size: 1.6rem;
+    padding-bottom: .2rem;
 
     color: ${({ theme }) => theme.COLORS.WHITE};
     background: transparent;

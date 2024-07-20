@@ -14,7 +14,7 @@ export const Container = styled.div`
   > h2 {
     font-size: 2.4rem;
     font-weight: bold;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
     color: ${({ theme }) => theme.COLORS.WHITE};
   }
 
@@ -24,9 +24,9 @@ export const Container = styled.div`
     font-size: 1.6rem;
     color: ${({ theme }) => theme.COLORS.GRAY_TEXT};
     line-height: 19px;
-    
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     display: -webkit-box; /* necessário para compatibilidade com alguns navegadores */
     -webkit-line-clamp: 2; /* número de linhas antes de cortar o texto */
